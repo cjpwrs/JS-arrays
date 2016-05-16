@@ -163,9 +163,15 @@ var myGroceryList = ['chips', 'pizza', 'hotpockets', 'MtnDew', 'corndogs'];
   //Code Here
   function removeItem(myGroceryList, item) {
     var blank = [];
-    if(item !== undefined || item !== NaN || item !== null || item !== 0 || item !== "" || item !== false){
-      if(myGroceryList !== undefined || myGroceryList !== NaN || myGroceryList !== null || myGroceryList !== 0 || myGroceryList !== "" || myGroceryList !== false){
-        for(var i = 0; i< myGroceryList.length; i++){
+    
+    if(myGroceryList === undefined || myGroceryList === NaN || myGroceryList === null || myGroceryList === 0 || myGroceryList === "" || myGroceryList === false){
+      return blank;
+    }
+    else if(item === undefined || item === NaN || item === null || item === 0 || item === "" || item === false){
+      return blank;
+    }
+    else {
+      for(var i = 0; i< myGroceryList.length; i++){
           if(myGroceryList[i]!== undefined || myGroceryList[i] !== NaN || myGroceryList[i] !== null || myGroceryList[i] !== 0 || myGroceryList[i] !== "" || myGroceryList[i] !== false){
             if(myGroceryList[i] === item){
               myGroceryList.splice(myGroceryList[i], 1);
@@ -173,24 +179,26 @@ var myGroceryList = ['chips', 'pizza', 'hotpockets', 'MtnDew', 'corndogs'];
           }
         }
         return myGroceryList;
-      }
-    }
-    else {
-      return blank;
+      
     }
   }
 
   function addItem(myGroceryList, item) {
     var blank = [];
-    if(item !== undefined || item !== NaN || item !== null || item !== 0 || item !== "" || item !== false){
+    if(myGroceryList === undefined || myGroceryList === NaN || myGroceryList === null || myGroceryList === 0 || myGroceryList === "" || myGroceryList === false){
+      return blank;
+    }
+    else if(item === undefined || item === NaN || item === null || item === 0 || item === "" || item === false){
+      return blank;
+    }
+    else {
       myGroceryList.push(item);
       return myGroceryList;
     }
-    else {
-      return blank;
-    }
   }
-  removeItem(myGroceryList, 'chips');
+
+  var testert = undefined;
+  removeItem(testert, 'chips');
 //removeItem(myGroceryList, 'chips') --> ['pizza', 'hotpockets', 'MtnDew', 'corndogs'];
 //addItem(myGroceryList, 'Jerky') --> ['pizza', 'hotpockets', 'MtnDew', 'corndogs', 'Jerky'];
 
