@@ -132,9 +132,11 @@ var str = 'this is my sentence';
 function reverse(str){
   var arr = str.split("");
   var newStr = "";
-  for(var i = arr.length-1; i >= 0; i--){
+  /*for(var i = arr.length-1; i >= 0; i--){
     newStr += arr[i];
-  }
+  }*/
+  arr.reverse();
+  newStr = arr.join("");
   return newStr;
 }
 
@@ -159,7 +161,36 @@ var myGroceryList = ['chips', 'pizza', 'hotpockets', 'MtnDew', 'corndogs'];
 */
 
   //Code Here
+  function removeItem(myGroceryList, item) {
+    var blank = [];
+    if(item !== undefined || item !== NaN || item !== null || item !== 0 || item !== "" || item !== false){
+      if(myGroceryList !== undefined || myGroceryList !== NaN || myGroceryList !== null || myGroceryList !== 0 || myGroceryList !== "" || myGroceryList !== false){
+        for(var i = 0; i< myGroceryList.length; i++){
+          if(myGroceryList[i]!== undefined || myGroceryList[i] !== NaN || myGroceryList[i] !== null || myGroceryList[i] !== 0 || myGroceryList[i] !== "" || myGroceryList[i] !== false){
+            if(myGroceryList[i] === item){
+              myGroceryList.splice(myGroceryList[i], 1);
+            }
+          }
+        }
+        return myGroceryList;
+      }
+    }
+    else {
+      return blank;
+    }
+  }
 
+  function addItem(myGroceryList, item) {
+    var blank = [];
+    if(item !== undefined || item !== NaN || item !== null || item !== 0 || item !== "" || item !== false){
+      myGroceryList.push(item);
+      return myGroceryList;
+    }
+    else {
+      return blank;
+    }
+  }
+  removeItem(myGroceryList, 'chips');
 //removeItem(myGroceryList, 'chips') --> ['pizza', 'hotpockets', 'MtnDew', 'corndogs'];
 //addItem(myGroceryList, 'Jerky') --> ['pizza', 'hotpockets', 'MtnDew', 'corndogs', 'Jerky'];
 
@@ -172,6 +203,13 @@ var myGroceryList = ['chips', 'pizza', 'hotpockets', 'MtnDew', 'corndogs'];
 //Write a function called maker that creates an array, fills that array with numbers from 1 to 215, then returns the array.
 
   //Code Here
+  function maker(){
+    var arr = [];
+    for(var i = 1; i<=215; i++){
+      arr.push(i);
+    }
+    return arr;
+  }
 
 
 
@@ -183,7 +221,14 @@ var numbers = [5, '9', 16, 19, '25', '34', 48];
 //array after adding ten to each item in numbers. *Verify your answer is correct. --> [15, 19, 26, 29, 35, 44, 58]
 
   //Code Here
-
+function addTen(numbers){
+  var newNumber = [];
+  for(var i = 0; i < numbers.length; i++){
+    newNumber.push(parseInt(numbers[i])+10);
+  }
+  return newNumber;
+}
+addTen(numbers);
 
 
 //Next Problem
@@ -204,7 +249,14 @@ for(var i = 0; i < num2; i++){
 //Write a function called 'longer' that is given arr1 and arr2 as it's only arguments. Return the array which is longest.
 
   //Code Here
-
+function longer(arr1, arr2){
+  if(arr1.length > arr2.length){
+    return arr1;
+  }
+  else {
+    return arr2;
+  }
+}
 
 /*As a continuation of the previous problem, write another function called 'both'.
   Your 'both' function will be given two arguments, arr1 and arr2 (from the previous example).
@@ -213,7 +265,17 @@ for(var i = 0; i < num2; i++){
 */
 
   //Code Here
-
+function both(arr1, arr2){
+  var newArr = [];
+  for(var i = 0; i < arr1.length; i++){
+    for(var i2 = 0; i2 < arr2.length; i2++){
+      if(arr1[i] === arr2[i2]){
+        newArr.push(arr1[i]);
+      }
+    }
+  }
+  return newArr;
+}
 
 
 
@@ -253,12 +315,22 @@ array with those four objects. After that console.log the length of the Array an
 sure that it's equal to 4. */
 
   //Code Here
+devMountainEmployees.push(tyler);
+devMountainEmployees.push(cahlan);
+devMountainEmployees.push(ryan);
+devMountainEmployees.push(colt);
+console.log(devMountainEmployees.length);
 
 /*Now let's say Cahlan has a mental breakdown and has to take a leave of absence to 'find himself'.
 Loop through your devMountainEmployees until you find cahlan, then remove him from the array.*/
 
   //Code Here
-
+for(var i = 0; i < devMountainEmployees.length; i++){
+  console.log(devMountainEmployees[i].name);
+  if(devMountainEmployees[i].name === 'Cahlan'){
+    devMountainEmployees.splice(i, 1);
+  }
+}
 
 
 
@@ -300,6 +372,7 @@ of Data is to have an Array full of objects. */
 //Create an empty array called users.
 
   //Code Here
+var users = [];
 
 /*Now add three user objects to your users array. Each user object should contain the
 following properties. name, email, password, username.*/
@@ -312,6 +385,23 @@ var user1 = {
     username: 'infiniateLoop'
 };
 
+var user2 = {
+    name: 'Sandra Dean',
+    email: 'sandrad@gmail.com',
+    password: 'iLoveJavaScript',
+    username: 'bleh'
+};
+
+var user3 = {
+    name: 'Mikey',
+    email: 'mikey@gmail.com',
+    password: 'iLoveJavaScript',
+    username: 'flip'
+};
+
+users.push(user1);
+users.push(user2);
+users.push(user3);
 //Your Code Here
 
 /*Now you have a very common data structure. Twitter is a good use case.
@@ -323,5 +413,10 @@ objects until you find Tyler's account (use tylermcginnis33@gmail.com to find hi
 Once you find the particular index he's located in, delete him from the array.*/
 
   //Code Here
+for(var i = 0; i < users.length; i++){
+  if(users[i].email === "tylermcginnis33@gmail.com"){
+    users.splice(i, 1);
+  }
+}
 
 //The activity we just did is very much how data works in 'the real world'.
